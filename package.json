@@ -1,13 +1,27 @@
 {
 	"name": "docksal",
 	"displayName": "Docksal",
-	"description": "Integrates Docksal.",
+	"description": "Run Docksal commands from within Visual Studio Code.",
+	"icon": "images/icon.png",
 	"version": "0.0.1",
+	"publisher": "nkoporec",
+	"repository": {
+    "type": "git",
+    "url": "https://github.com/nkoporec/docksal-vscode"
+	},
+	"bugs": {
+		"url": "https://github.com/nkoporec/docksal-vscode/issues"
+	},
 	"engines": {
 		"vscode": "^1.39.0"
 	},
 	"categories": [
 		"Other"
+	],
+	"keywords": [
+		"Docksal",
+		"Docker",
+		"php"
 	],
 	"activationEvents": [
 		"onCommand:docksal.status",

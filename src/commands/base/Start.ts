@@ -51,20 +51,22 @@ export default class Start extends Common {
   */
   public static async runProject() {
     let cmd = "fin start"
-    if (this.execCmd(cmd)) {
-      window.showInformationMessage('Docksal has started');
-      let browser = this.getBrowser()
 
-      try {
-        await open(this.docksalUrl().toString(), { app: browser })
-      } catch {
-        window.showErrorMessage(
-          `Opening browser failed. Please check if you have installed the browser ${browser} correctly!`
-        )
+    this.execCmd(cmd, async (info) => {
+      if (info.err) {
+        Output.showConsole()
+      } else {
+        window.showInformationMessage('Docksal has started');
+        let browser = this.getBrowser()
+
+        try {
+          await open(this.docksalUrl().toString(), { app: browser })
+        } catch {
+          window.showErrorMessage(
+            `Opening browser failed. Please check if you have installed the browser ${browser} correctly!`
+          )
+        }
       }
-    }
-    else {
-      Output.showConsole()
-    }
+    })
   }
 }

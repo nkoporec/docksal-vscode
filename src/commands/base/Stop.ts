@@ -10,12 +10,13 @@ export default class Stop extends Common {
   public static async stopProject() {
     let cmd = "fin stop"
 
-    if(this.execCmd(cmd)) {
-      window.showInformationMessage('Docksal has been stopped');
-    }
-    else {
-      Output.showConsole()
-    }
+    this.execCmd(cmd, async (info) => {
+      if (info.err) {
+        Output.showConsole()
+      } else {
+        window.showInformationMessage('Docksal has been stopped');
+      }
+    })
   }
 
   /**

@@ -74,7 +74,11 @@ export default class Common {
   /**
   * Executes a docksal command.
   */
-  public static async execCmd(cmd: string) {
+  protected static async execCmd(cmd: string, callback: (info: {
+    err: Error | null
+    stdout: string
+    stderr: string
+  }) => void) {
     // Check workspace.
     this.isWorkspaceValid()
 
@@ -87,11 +91,14 @@ export default class Common {
       `cd "${workspaceRoot}" && ${cmd}`
 
     // Execute the cmd.
-    cp.exec(command, (err, stdout) => {
+    cp.exec(command, async (err, stdout, stderr) => {
       if (err) {
-        Output.error(stdout)
+        Output.error(err.message.trim())
         Output.showConsole()
       }
-    });
+      await callback({
+        err, stdout, stderr
+      })
+    })
   }
 }

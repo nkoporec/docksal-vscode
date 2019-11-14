@@ -105,35 +105,4 @@ export default class Common {
       })
     })
   }
-
-  /**
-  * Executes a docksal command.
-  */
-  protected static async execCmd(cmd: string, callback: (info: {
-    err: Error | null
-    stdout: string
-    stderr: string
-  }) => void) {
-    // Check workspace.
-    this.isWorkspaceValid()
-
-    // Build command.
-    let workspaceRoot = this.workspacePath()
-    let command = process.platform == 'win32' ?
-      // Windows command
-      `cd /d "${workspaceRoot}" && ${cmd}` :
-      // Unix command
-      `cd "${workspaceRoot}" && ${cmd}`
-
-    // Execute the cmd.
-    cp.exec(command, async (err, stdout, stderr) => {
-      if (err) {
-        Output.error(err.message.trim())
-        Output.showConsole()
-      }
-      await callback({
-        err, stdout, stderr
-      })
-    })
-  }
 }

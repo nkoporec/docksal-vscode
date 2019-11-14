@@ -29,6 +29,18 @@ export default class Common {
   }
 
   /**
+   * Get the docksal project name out of the project folder.
+   *
+   * @returns string
+   */
+  public static projectName() {
+    let workspace = this.workspacePath().split('/');
+    var workspaceFolderName = workspace.pop() || workspace.pop();
+
+    return workspaceFolderName;
+  }
+
+  /**
   * Gets the URL of the docksal project from config, if no config is found then it
   * will generate the url automaticly out of the folder name.
   *
@@ -39,8 +51,7 @@ export default class Common {
     let docksalUrl = config.get<string>("url")
 
     if (!docksalUrl) {
-      let workspace = this.workspacePath().split('/');
-      var workspaceFolderName = workspace.pop() || workspace.pop();
+      var workspaceFolderName = this.projectName();
       docksalUrl = `http://"${workspaceFolderName}".docksal`
     }
 

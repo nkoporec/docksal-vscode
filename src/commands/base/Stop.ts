@@ -1,6 +1,5 @@
 import * as vscode from 'vscode'
 import Common from '../../Common';
-import Output from '../../utils/Output'
 
 export default class Stop extends Common {
 

@@ -1,6 +1,5 @@
 import Common from '../../Common';
 import * as vscode from 'vscode';
-import Output from '../../utils/Output'
 const open = require('opn')
 
 export default class Start extends Common {

@@ -1,6 +1,5 @@
 import { workspace, window, Terminal, TreeItem } from 'vscode'
 import * as cp from 'child_process'
-import Output from './utils/Output'
 import * as fs from 'fs'
 import * as path from 'path'
 

@@ -85,6 +85,30 @@ export default class Common {
   /**
   * Executes a docksal command.
   */
+  protected static async runCommand({ command, args = []}: {command: string, args: string[]}): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const process = cp.spawn(command, args, { cwd: this.workspacePath() })
+      let totalData = ``
+      process.stdout.on('data', async dataBuffer => {
+        const data = dataBuffer.toString()
+        totalData += data
+      })
+      process.on('error', err => {
+        reject(err)
+      })
+      process.on('exit', code => {
+        if (code) {
+          reject(new Error(`command exited with status ${code}`))
+        } else {
+          resolve(totalData.trim())
+        }
+      })
+    })
+  }
+
+  /**
+  * Executes a docksal command.
+  */
   protected static async execCmd(cmd: string, callback: (info: {
     err: Error | null
     stdout: string

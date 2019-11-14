@@ -50,23 +50,25 @@ export default class Start extends Common {
   * Starts the docksal project.
   */
   public static async runProject() {
-    let cmd = "fin start"
+    const command = await this.runCommand({ command: 'fin', args: ['start'] });
+    if (command) {
+      window.showInformationMessage('Docksal has started!');
+      let browser = this.getBrowser()
 
-    this.execCmd(cmd, async (info) => {
-      if (info.err) {
-        Output.showConsole()
-      } else {
-        window.showInformationMessage('Docksal has started');
-        let browser = this.getBrowser()
-
-        try {
-          await open(this.docksalUrl().toString(), { app: browser })
-        } catch {
-          window.showErrorMessage(
-            `Opening browser failed. Please check if you have installed the browser ${browser} correctly!`
-          )
-        }
+      try {
+        await open(this.docksalUrl().toString(), { app: browser })
+      } catch {
+        window.showErrorMessage(
+          `Opening browser failed. Please check if you have installed the browser ${browser} correctly!`
+        )
       }
-    })
+
+      return true;
+    }
+
+    window.showErrorMessage(
+      `Docksal: Project failed to start, please see the console output for more info.`
+    )
+    return false;
   }
 }

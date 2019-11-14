@@ -8,15 +8,16 @@ export default class Stop extends Common {
   * Stop the docksal project.
   */
   public static async stopProject() {
-    let cmd = "fin stop"
+    const command = await this.runCommand({ command: 'fin', args: ['stop'] });
+    if (command) {
+      window.showInformationMessage('Docksal has been stopped');
+      return true;
+    }
 
-    this.execCmd(cmd, async (info) => {
-      if (info.err) {
-        Output.showConsole()
-      } else {
-        window.showInformationMessage('Docksal has been stopped');
-      }
-    })
+    window.showErrorMessage(
+      `Docksal: Project failed to stop, please see the console output for more info.`
+    )
+    return false;
   }
 
   /**

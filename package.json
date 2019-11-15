@@ -3,7 +3,7 @@
 	"displayName": "Docksal",
 	"description": "Run Docksal commands from within Visual Studio Code.",
 	"icon": "images/icon.png",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"publisher": "nkoporec",
 	"repository": {
     "type": "git",

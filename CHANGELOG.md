@@ -1,9 +1,11 @@
-# Change Log
+# ChangeLog : Docksal
 
-All notable changes to the "helloworld" extension will be documented in this file.
+[![Version](https://vsmarketplacebadge.apphb.com/version/nkoporec.docksal.svg)](https://marketplace.visualstudio.com/items?itemName=nkoporec.docksal)
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+#### v0.0.2 - November 15,2019
 
-## [Unreleased]
-
-- Initial release
+* Add restart command
+* Add Mailhog command
+* Add PhpMyAdmin command
+* Add Varnish command
+* General bug fixes

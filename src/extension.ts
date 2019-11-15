@@ -3,6 +3,7 @@ import Status from './commands/base/Status'
 import Start from './commands/base/Start'
 import Stop from './commands/base/Stop'
 import OpenBrowser from './commands/project/OpenBrowser'
+import PhpMyAdmin from './commands/tools/PhpMyAdmin'
 
 export async function activate(context: ExtensionContext) {
 	// Base commands
@@ -14,6 +15,9 @@ export async function activate(context: ExtensionContext) {
 
 	// Project specific commands.
 	context.subscriptions.push(commands.registerCommand('docksal.project.open', () => { OpenBrowser.run() }))
+
+	// Tools commands.
+	context.subscriptions.push(commands.registerCommand('docksal.phpmyadmin.open', () => { PhpMyAdmin.open() }))
 }
 
 export function deactivate() {}

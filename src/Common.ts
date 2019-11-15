@@ -1,4 +1,4 @@
-import { workspace, window, Terminal, TreeItem } from 'vscode'
+import { workspace, window, Terminal, TreeItem, ProgressLocation } from 'vscode'
 import * as cp from 'child_process'
 import * as fs from 'fs'
 import * as path from 'path'
@@ -37,6 +37,27 @@ export default class Common {
     var workspaceFolderName = workspace.pop() || workspace.pop();
 
     return workspaceFolderName;
+  }
+
+  /**
+   * Get the docksal container status
+   *
+   * @returns boolean
+   */
+  protected static async getContainerStatus(container: string) {
+    const status = await this.runCommand({ command: 'fin', args: ['status'] });
+
+    let containers = status.toString().split("\n");
+    const projectName = this.projectName();
+    let containerRunning = false;
+
+    containers.forEach(function (item) {
+      if (item.includes(`${projectName}_${container}`) && item.includes('Up')) {
+        containerRunning = true;
+      }
+    });
+
+    return containerRunning;
   }
 
   /**

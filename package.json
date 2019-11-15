@@ -29,7 +29,8 @@
 		"onCommand:docksal.start.vm",
 		"onCommand:docksal.stop.project",
 		"onCommand:docksal.stop.vm",
-		"onCommand:docksal.project.open"
+		"onCommand:docksal.project.open",
+		"onCommand:docksal.phpmyadmin.open"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -78,6 +79,10 @@
 			{
 				"command": "docksal.project.open",
 				"title": "Docksal: Open Project URL"
+			},
+			{
+				"command": "docksal.phpmyadmin.open",
+				"title": "Docksal: Open PhpMyAdmin"
 			}
 		]
 	},

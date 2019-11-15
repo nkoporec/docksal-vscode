@@ -6,6 +6,7 @@ import OpenBrowser from './commands/project/OpenBrowser'
 import PhpMyAdmin from './commands/tools/PhpMyAdmin'
 import Mailhog from './commands/tools/Mailhog'
 import Varnish from './commands/tools/Varnish'
+import Restart from './commands/base/Restart'
 
 export async function activate(context: ExtensionContext) {
 	// Base commands
@@ -14,6 +15,7 @@ export async function activate(context: ExtensionContext) {
 	context.subscriptions.push(commands.registerCommand('docksal.start.vm', () => { Start.runVM() }))
 	context.subscriptions.push(commands.registerCommand('docksal.stop.project', () => { Stop.stopProject() }))
 	context.subscriptions.push(commands.registerCommand('docksal.stop.vm', () => { Stop.stopVM() }))
+	context.subscriptions.push(commands.registerCommand('docksal.restart.project', () => { Restart.restartProject() }))
 
 	// Project specific commands.
 	context.subscriptions.push(commands.registerCommand('docksal.project.open', () => { OpenBrowser.run() }))

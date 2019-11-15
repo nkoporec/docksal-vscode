@@ -29,6 +29,7 @@
 		"onCommand:docksal.start.vm",
 		"onCommand:docksal.stop.project",
 		"onCommand:docksal.stop.vm",
+		"onCommand:docksal.restart.project",
 		"onCommand:docksal.project.open",
 		"onCommand:docksal.phpmyadmin.open",
 		"onCommand:docksal.mailhog.open",
@@ -77,6 +78,10 @@
 			{
 				"command": "docksal.stop.vm",
 				"title": "Docksal: Stop VM"
+			},
+			{
+				"command": "docksal.restart.project",
+				"title": "Docksal: Restart project"
 			},
 			{
 				"command": "docksal.project.open",

@@ -30,7 +30,8 @@
 		"onCommand:docksal.stop.project",
 		"onCommand:docksal.stop.vm",
 		"onCommand:docksal.project.open",
-		"onCommand:docksal.phpmyadmin.open"
+		"onCommand:docksal.phpmyadmin.open",
+		"onCommand:docksal.mailhog.open"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -83,6 +84,10 @@
 			{
 				"command": "docksal.phpmyadmin.open",
 				"title": "Docksal: Open PhpMyAdmin"
+			},
+			{
+				"command": "docksal.mailhog.open",
+				"title": "Docksal: Open Mailhog"
 			}
 		]
 	},

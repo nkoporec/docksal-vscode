@@ -2,32 +2,32 @@ import * as vscode from 'vscode'
 import Common from '../../Common';
 const open = require('opn')
 
-export default class PhpMyAdmin extends Common {
+export default class Mailhog extends Common {
 
   /**
-  * Open the phpmyadmin web ui.
+  * Open the mailhog web ui.
   */
   public static async open() {
-    // Check phpmyadmin container.
-    const phpMyAdminContainer = await vscode.window.withProgress(
+    // Check mailhog container.
+    const mailHogContainer = await vscode.window.withProgress(
       {
         location: vscode.ProgressLocation.Notification,
-        title: 'Docksal: Checking PhpMyAdmin status',
+        title: 'Docksal: Checking Mailhog status',
       },
-      () => this.getContainerStatus('pma')
+      () => this.getContainerStatus('mail')
     )
 
-    if (phpMyAdminContainer == false) {
-      vscode.window.showErrorMessage('Docksal: PhpMyAdmin container is not running!');
+    if (mailHogContainer == false) {
+      vscode.window.showErrorMessage('Docksal: Mailhog container is not running!');
       return false;
     }
 
     // Open the interface.
-    vscode.window.showInformationMessage('Docksal: Opening PhpMyAdmin interface');
+    vscode.window.showInformationMessage('Docksal: Opening Mailhog interface');
     let browser = this.getBrowser()
     try {
       const docksalUrl = this.docksalUrl().toString().replace(/(^\w+:|^)\/\//, '');;
-      const url = `http://pma.${docksalUrl}`
+      const url = `http://mail.${docksalUrl}`
       await open(url, { app: browser })
     } catch {
       vscode.window.showErrorMessage(

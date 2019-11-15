@@ -31,7 +31,8 @@
 		"onCommand:docksal.stop.vm",
 		"onCommand:docksal.project.open",
 		"onCommand:docksal.phpmyadmin.open",
-		"onCommand:docksal.mailhog.open"
+		"onCommand:docksal.mailhog.open",
+		"onCommand:docksal.varnish.open"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -88,6 +89,10 @@
 			{
 				"command": "docksal.mailhog.open",
 				"title": "Docksal: Open Mailhog"
+			},
+			{
+				"command": "docksal.varnish.open",
+				"title": "Docksal: Open Varnish"
 			}
 		]
 	},

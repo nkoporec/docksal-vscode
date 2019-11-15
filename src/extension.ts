@@ -5,6 +5,7 @@ import Stop from './commands/base/Stop'
 import OpenBrowser from './commands/project/OpenBrowser'
 import PhpMyAdmin from './commands/tools/PhpMyAdmin'
 import Mailhog from './commands/tools/Mailhog'
+import Varnish from './commands/tools/Varnish'
 
 export async function activate(context: ExtensionContext) {
 	// Base commands
@@ -20,6 +21,7 @@ export async function activate(context: ExtensionContext) {
 	// Tools commands.
 	context.subscriptions.push(commands.registerCommand('docksal.phpmyadmin.open', () => { PhpMyAdmin.open() }))
 	context.subscriptions.push(commands.registerCommand('docksal.mailhog.open', () => { Mailhog.open() }))
+	context.subscriptions.push(commands.registerCommand('docksal.varnish.open', () => { Varnish.open() }))
 }
 
 export function deactivate() {}
